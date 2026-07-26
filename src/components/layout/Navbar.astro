@@ -1,5 +1,10 @@
 ---
 import Container from "../Container.astro";
+import MobileMenu from "../MobileMenu.astro";
+import LanguageSwitcher from "../LanguageSwitcher.astro";
+import { getLanguageFromUrl } from "../../i18n/index";
+
+const currentLang = getLanguageFromUrl(Astro.url.pathname);
 ---
 
 <header class="fixed top-0 z-50 w-full border-b border-transparent bg-black/30 backdrop-blur-md">
@@ -9,27 +14,34 @@ import Container from "../Container.astro";
         <div class="flex h-20 items-center justify-between">
 
             <a
-                href="/"
+                href={currentLang === "en" ? "/en" : "/"}
                 class="heading-font text-xl font-bold tracking-wide"
             >
                 Martin Novák
             </a>
 
-            <nav class="flex gap-8 text-sm">
+            <nav class="hidden lg:flex gap-8 text-sm items-center">
 
-                <a href="#work" class="transition hover:text-white text-neutral-400">
-                    Work
+                <a href={currentLang === "en" ? "/en#work" : "/#work"} class="transition hover:text-white text-neutral-400">
+                    {currentLang === "en" ? "Work" : "Práce"}
                 </a>
 
-                <a href="#about" class="transition hover:text-white text-neutral-400">
-                    About
+                <a href={currentLang === "en" ? "/en#about" : "/#about"} class="transition hover:text-white text-neutral-400">
+                    {currentLang === "en" ? "About" : "O mne"}
                 </a>
 
-                <a href="#contact" class="transition hover:text-white text-neutral-400">
-                    Contact
+                <a href={currentLang === "en" ? "/en#contact" : "/#contact"} class="transition hover:text-white text-neutral-400">
+                    {currentLang === "en" ? "Contact" : "Kontakt"}
                 </a>
+
+                <LanguageSwitcher currentLang={currentLang} />
 
             </nav>
+
+            <div class="flex lg:hidden items-center gap-4">
+                <LanguageSwitcher currentLang={currentLang} />
+                <MobileMenu lang={currentLang} />
+            </div>
 
         </div>
 

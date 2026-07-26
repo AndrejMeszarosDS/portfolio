@@ -4,18 +4,27 @@ import SectionTitle from "../components/SectionTitle.astro";
 import ProjectCard from "../components/ProjectCard.astro";
 
 import { projects } from "../data/projects";
+import { getTranslation } from "../i18n/index";
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = "sk" } = Astro.props;
+
+const t = (key: string) => getTranslation(lang, key);
 ---
 
 <section
-  id="projects"
+  id="work"
   class="py-32"
 >
 
   <Container>
 
     <SectionTitle
-      subtitle="Portfolio"
-      title="Featured Projects"
+      subtitle={t('projects.subtitle')}
+      title={t('projects.title')}
     />
 
     <div class="grid gap-8 lg:grid-cols-2">
@@ -26,6 +35,8 @@ import { projects } from "../data/projects";
           title={project.title}
           category={project.category}
           year={project.year}
+          image={project.image}
+          slug={project.slug}
         />
 
       ))}

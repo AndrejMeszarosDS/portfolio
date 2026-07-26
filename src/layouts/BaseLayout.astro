@@ -4,15 +4,19 @@ import Navbar from "../components/layout/Navbar.astro";
 
 interface Props {
   title?: string;
+  lang?: string;
 }
 
 const {
   title = 'Portfolio',
+  lang = 'sk',
 } = Astro.props;
+
+const htmlLang = lang === 'en' ? 'en-US' : 'sk-SK';
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={htmlLang}>
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width" />

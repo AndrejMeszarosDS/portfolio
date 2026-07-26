@@ -4,41 +4,44 @@ interface Props {
   category: string
   year: number
   image: string
+  slug: string
 }
 
-const { title, category, year, image } = Astro.props
+const { title, category, year, image, slug } = Astro.props
 ---
 
-<article class="group">
+<a href={`/projects/${slug}`} class="group block">
+    <article>
 
-    <div class="overflow-hidden rounded-3xl">
+        <div class="overflow-hidden rounded-3xl">
 
-        <img
-            src={image}
-            alt={title}
-            class="aspect-video w-full object-cover transition duration-500 group-hover:scale-105"
-        />
-
-    </div>
-
-    <div class="mt-6 flex items-center justify-between">
-
-        <div>
-
-            <h3 class="heading-font text-3xl">
-                {title}
-            </h3>
-
-            <p class="mt-2 text-neutral-500">
-                {category}
-            </p>
+            <img
+                src={image}
+                alt={title}
+                class="aspect-video w-full object-cover transition duration-500 group-hover:scale-105"
+            />
 
         </div>
 
-        <span class="text-neutral-500">
-            {year}
-        </span>
+        <div class="mt-6 flex items-center justify-between">
 
-    </div>
+            <div>
 
-</article>
+                <h3 class="heading-font text-3xl group-hover:text-neutral-300 transition">
+                    {title}
+                </h3>
+
+                <p class="mt-2 text-neutral-500">
+                    {category}
+                </p>
+
+            </div>
+
+            <span class="text-neutral-500">
+                {year}
+            </span>
+
+        </div>
+
+    </article>
+</a>

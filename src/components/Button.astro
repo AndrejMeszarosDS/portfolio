@@ -1,14 +1,24 @@
 ---
 interface Props {
-    href: string
+  href?: string;
+  variant?: "primary" | "secondary";
+  class?: string;
 }
 
-const { href } = Astro.props
+const { href, variant = "primary", class: className } = Astro.props;
+const baseStyles = "inline-flex items-center rounded-lg px-6 py-3 font-semibold transition";
+const variants = {
+  primary: "bg-white text-black hover:bg-neutral-200",
+  secondary: "border border-white text-white hover:bg-white hover:text-black",
+};
 ---
 
-<a
-    href={href}
-    class="inline-flex items-center rounded-full bg-white px-7 py-3 text-sm font-semibold text-black transition duration-300 hover:-translate-y-0.5 hover:bg-neutral-200"
->
+{href ? (
+  <a href={href} class={`${baseStyles} ${variants[variant]} ${className || ""}`}>
     <slot />
-</a>
+  </a>
+) : (
+  <button class={`${baseStyles} ${variants[variant]} ${className || ""}`}>
+    <slot />
+  </button>
+)}

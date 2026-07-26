@@ -1,0 +1,58 @@
+{
+  "nav": {
+    "work": "Práce",
+    "about": "O mne",
+    "contact": "Kontakt"
+  },
+  "hero": {
+    "available": "DOSTUPNÝ NA PRÁCU",
+    "title": "Martin Novák",
+    "subtitle": "Tvorca multimédií a rozprávač príbehov",
+    "description": "Spájam tvorcovskú víziu s najmodernejšou technológiou, aby som vytváral multimediálne skúsenosti, ktoré očarujú, angažujú a inšpirujú. Špecializujem sa na kinematografiu, motion graphics a vizuálne rozprávanie príbehov.",
+    "cta1": "Začať projekt",
+    "cta2": "Zobraziť moju prácu"
+  },
+  "projects": {
+    "subtitle": "Portfólio",
+    "title": "Vybrané projekty"
+  },
+  "about": {
+    "subtitle": "O mne",
+    "title": "Kreatívny multimédiový profesionál",
+    "bio1": "Som vášnivý študent multimédií s odbornosťou vo videoprodukcii, motion graphics a tvorbe digitálneho obsahu. Mám ostrý zrak pre vizuálny príbehy a transformujem kreatívne nápady na pútavé multimediálne skúsenosti.",
+    "bio2": "Moja práca sa rozprestiera cez komerčné kampane, nezávislé filmy a kreatívne projekty. Špecializujem sa na kinematografiu, strihanie videí, farebné korekcie a vizuálne efekty.",
+    "bio3": "Keď netvorím, nájdete ma pri skúmaní nových technológií, experimentovaní s vznikajúcimi nástrojmi a neustálom posúvaní hraníc multimediálnej produkcie.",
+    "skills": "Zručnosti",
+    "experience": "Skúsenosti",
+    "current": "Súčasnosť",
+    "freelance": "Nezávislý tvorca obsahu",
+    "freelanceDate": "2024 - Súčasnosť"
+  },
+  "contact": {
+    "subtitle": "Poďme v kontakte",
+    "title": "Pracujme spolu",
+    "name": "Meno",
+    "namePlaceholder": "Vaše meno",
+    "email": "Email",
+    "emailPlaceholder": "vasa.email@priklad.sk",
+    "message": "Správa",
+    "messagePlaceholder": "Povedzte mi o vašom projekte...",
+    "send": "Poslať správu",
+    "connect": "Ďalšie spôsoby kontaktu",
+    "emailLabel": "Email",
+    "instagramLabel": "Instagram",
+    "linkedinLabel": "LinkedIn",
+    "vimeoLabel": "Vimeo"
+  },
+  "projectDetail": {
+    "back": "← Späť na portfólio",
+    "aboutProject": "O projekte",
+    "technologies": "Použité technológie",
+    "projectDetails": "Podrobnosti projektu",
+    "category": "Kategória",
+    "year": "Rok",
+    "workWithMe": "Pracovať so mnou",
+    "gallery": "Galéria",
+    "moreProjects": "Ďalšie projekty"
+  }
+}

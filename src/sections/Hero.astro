@@ -1,11 +1,126 @@
 ---
-import Showreel from "../components/Showreel.astro";
+import Container from "../components/Container.astro";
+import Button from "../components/Button.astro";
+import { getTranslation } from "../i18n/index";
+
+interface Props {
+  lang?: string;
+}
+
+const { lang = "sk" } = Astro.props;
+
+const t = (key: string) => getTranslation(lang, key);
 ---
 
-...
+<section class="relative min-h-screen flex items-center pt-20">
+  <Container>
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left Content -->
+      <div class="space-y-8 z-10">
+        <!-- Availability Badge -->
+        <div class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-2 w-fit">
+          <div class="w-2 h-2 bg-lime-400 rounded-full animate-pulse"></div>
+          <span class="text-sm font-medium text-white">{t('hero.available')}</span>
+        </div>
 
-<div class="animate-fade-up">
+        <!-- Name -->
+        <div class="space-y-4">
+          <h1 class="heading-font text-6xl md:text-7xl font-bold leading-tight">
+            Martin<br />Novák
+          </h1>
+          <p class="text-2xl md:text-3xl text-neutral-400 font-light">
+            {t('hero.subtitle')}
+          </p>
+        </div>
 
-    <Showreel />
+        <!-- Description -->
+        <p class="text-lg text-neutral-400 leading-relaxed max-w-md">
+          {t('hero.description')}
+        </p>
 
-</div>
+        <!-- CTA Buttons -->
+        <div class="flex flex-col sm:flex-row gap-4 pt-4">
+          <Button href={lang === "en" ? "/en#contact" : "/#contact"} variant="primary">
+            {t('hero.cta1')}
+          </Button>
+          <Button href={lang === "en" ? "/en#work" : "/#work"} variant="secondary">
+            {t('hero.cta2')}
+          </Button>
+        </div>
+      </div>
+
+      <!-- Right - Profile Image with Duotone Effect -->
+      <div class="relative h-96 md:h-full min-h-96">
+        <div class="absolute inset-0 rounded-3xl overflow-hidden">
+          <!-- SVG with duotone effect -->
+          <svg width="100%" height="100%" viewBox="0 0 600 700" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <filter id="duotone">
+                <feColorMatrix type="saturate" values="1.5"/>
+                <feComponentTransfer>
+                  <feFuncR type="discrete" tableValues="0 0.2 0.4 0.6 0.8 1"/>
+                  <feFuncG type="discrete" tableValues="0 0.3 0.5 0.7 0.9 1"/>
+                  <feFuncB type="discrete" tableValues="0 0.1 0.3 0.5 0.7 1"/>
+                </feComponentTransfer>
+              </filter>
+              <linearGradient id="duotoneFill" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#FFD60A;stop-opacity:0.8" />
+                <stop offset="100%" style="stop-color:#00D9FF;stop-opacity:0.8" />
+              </linearGradient>
+              <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#0a0a0a;stop-opacity:1" />
+                <stop offset="100%" style="stop-color:#1a1a1a;stop-opacity:1" />
+              </linearGradient>
+            </defs>
+
+            <!-- Background -->
+            <rect width="600" height="700" fill="url(#bgGradient)"/>
+
+            <!-- Head -->
+            <circle cx="300" cy="180" r="90" fill="#FFD60A" opacity="0.7"/>
+            <circle cx="300" cy="180" r="85" fill="#00D9FF" opacity="0.6"/>
+            <circle cx="300" cy="180" r="75" fill="#FFD60A" opacity="0.5" blend-mode="multiply"/>
+            
+            <!-- Face outline -->
+            <path d="M 250 140 Q 220 160 220 200 Q 220 260 300 280 Q 380 260 380 200 Q 380 160 350 140" fill="none" stroke="#FFD60A" stroke-width="2" opacity="0.8"/>
+
+            <!-- Eyes -->
+            <circle cx="270" cy="170" r="12" fill="#00D9FF" opacity="0.8"/>
+            <circle cx="330" cy="170" r="12" fill="#FFD60A" opacity="0.8"/>
+            <circle cx="272" cy="168" r="6" fill="#0a0a0a"/>
+            <circle cx="332" cy="168" r="6" fill="#0a0a0a"/>
+
+            <!-- Smile -->
+            <path d="M 270 200 Q 300 220 330 200" stroke="#FFD60A" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.8"/>
+
+            <!-- Body/Shirt -->
+            <path d="M 240 280 L 200 450 L 180 680 L 420 680 L 400 450 L 360 280" fill="#00D9FF" opacity="0.6"/>
+            <path d="M 260 280 L 220 420 L 200 680 L 400 680 L 380 420 L 340 280" fill="#FFD60A" opacity="0.5" blend-mode="screen"/>
+
+            <!-- Arms -->
+            <ellipse cx="160" cy="350" rx="40" ry="80" fill="#FFD60A" opacity="0.6" transform="rotate(-30 160 350)"/>
+            <ellipse cx="440" cy="350" rx="40" ry="80" fill="#00D9FF" opacity="0.6" transform="rotate(30 440 350)"/>
+
+            <!-- Accent circles -->
+            <circle cx="100" cy="100" r="120" fill="none" stroke="#FFD60A" stroke-width="2" opacity="0.3"/>
+            <circle cx="500" cy="600" r="150" fill="none" stroke="#00D9FF" stroke-width="2" opacity="0.3"/>
+
+            <!-- Text overlay -->
+            <text x="300" y="650" font-size="36" font-weight="bold" text-anchor="middle" fill="white" opacity="0">Multimedia</text>
+          </svg>
+        </div>
+
+        <!-- Decorative blur circles -->
+        <div class="absolute -top-20 -right-20 w-64 h-64 bg-lime-400/10 rounded-full blur-3xl"></div>
+        <div class="absolute -bottom-20 -left-20 w-64 h-64 bg-cyan-400/10 rounded-full blur-3xl"></div>
+      </div>
+    </div>
+
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+      <svg class="w-6 h-6 text-neutral-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+      </svg>
+    </div>
+  </Container>
+</section>

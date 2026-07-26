@@ -1,0 +1,48 @@
+---
+import { languages } from "../i18n/index";
+
+interface Props {
+  currentLang: string;
+}
+
+const { currentLang } = Astro.props;
+---
+
+<div class="relative group">
+  <button
+    class="flex items-center gap-2 rounded-lg border border-neutral-700 bg-neutral-900 px-3 py-2 text-sm font-medium text-white hover:bg-neutral-800 transition"
+    aria-label="Select language"
+  >
+    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 00.948-.684l1.498-4.493a1 1 0 011.502-.684l1.498 4.493a1 1 0 00.948.684H19a2 2 0 012 2v2M3 5a2 2 0 002 2h3.28a1 1 0 00.948-.684l1.498-4.493a1 1 0 011.502-.684l1.498 4.493a1 1 0 00.948.684H19a2 2 0 012 2v2m-2 4a2 2 0 00-2-2H5a2 2 0 00-2 2m2 0a2 2 0 002 2h10a2 2 0 002-2m-2 0a2 2 0 012-2h2.28a1 1 0 00.948-.684l1.498-4.493a1 1 0 011.502-.684l1.498 4.493a1 1 0 00.948.684H21a2 2 0 012 2v2"></path>
+    </svg>
+    <span>{currentLang.toUpperCase()}</span>
+  </button>
+
+  <!-- Language dropdown -->
+  <div class="absolute right-0 mt-0 w-32 rounded-lg border border-neutral-700 bg-neutral-900 shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50">
+    {Object.entries(languages).map(([code, name]) => (
+      <a
+        href={code === "sk" ? "/" : `/en${Astro.url.pathname === "/" ? "" : Astro.url.pathname}`}
+        class={`block w-full px-4 py-2 text-left text-sm transition ${
+          currentLang === code
+            ? "bg-neutral-700 text-white"
+            : "text-neutral-400 hover:text-white hover:bg-neutral-800"
+        }`}
+      >
+        {name}
+      </a>
+    ))}
+  </div>
+</div>
+
+<script>
+  // Handle language switching
+  document.addEventListener("click", (e) => {
+    const target = e.target as HTMLElement;
+    const link = target.closest("a[href*='/en'], a[href^='/']");
+    if (link) {
+      localStorage.setItem("preferredLanguage", link.href.includes("/en") ? "en" : "sk");
+    }
+  });
+</script>
