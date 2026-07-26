@@ -1,0 +1,44 @@
+---
+interface Props {
+  title: string
+  category: string
+  year: number
+  image: string
+}
+
+const { title, category, year, image } = Astro.props
+---
+
+<article class="group">
+
+    <div class="overflow-hidden rounded-3xl">
+
+        <img
+            src={image}
+            alt={title}
+            class="aspect-video w-full object-cover transition duration-500 group-hover:scale-105"
+        />
+
+    </div>
+
+    <div class="mt-6 flex items-center justify-between">
+
+        <div>
+
+            <h3 class="heading-font text-3xl">
+                {title}
+            </h3>
+
+            <p class="mt-2 text-neutral-500">
+                {category}
+            </p>
+
+        </div>
+
+        <span class="text-neutral-500">
+            {year}
+        </span>
+
+    </div>
+
+</article>

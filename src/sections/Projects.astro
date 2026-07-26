@@ -1,0 +1,37 @@
+---
+import Container from "../components/Container.astro";
+import SectionTitle from "../components/SectionTitle.astro";
+import ProjectCard from "../components/ProjectCard.astro";
+
+import { projects } from "../data/projects";
+---
+
+<section
+  id="projects"
+  class="py-32"
+>
+
+  <Container>
+
+    <SectionTitle
+      subtitle="Portfolio"
+      title="Featured Projects"
+    />
+
+    <div class="grid gap-8 lg:grid-cols-2">
+
+      {projects.map(project => (
+
+        <ProjectCard
+          title={project.title}
+          category={project.category}
+          year={project.year}
+        />
+
+      ))}
+
+    </div>
+
+  </Container>
+
+</section>

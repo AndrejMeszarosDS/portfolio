@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+:root {
+  --background: #0b0b0b;
+  --surface: #151515;
+
+  --text: #ffffff;
+  --text-secondary: #a1a1aa;
+
+  --primary: #ffffff;
+  --primary-hover: #e5e5e5;
+
+  --border: #262626;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--text);
+  font-family: "Inter", sans-serif;
+}
+
+::selection {
+  background: white;
+  color: black;
+}
+
+.heading-font {
+  font-family: "Space Grotesk", sans-serif;
+}
+video{
+    transform:scale(1);
+    transition:.6s;
+}
+
+.group:hover video{
+    transform:scale(1.03);
+}
+
+@keyframes fadeUp {
+
+    from{
+        opacity:0;
+        transform:translateY(30px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+
+}
+
+.animate-fade-up{
+    animation:fadeUp .8s ease forwards;
+}
+
+:root {
+  --color-bg: #0b0b0b;
+  --color-surface: #171717;
+  --color-card: #1f1f1f;
+  --color-border: #2b2b2b;
+
+  --color-text: #f8f8f8;
+  --color-muted: #9ca3af;
+
+  --radius: 24px;
+
+  --container: 1280px;
+}
+.section {
+  padding: 8rem 0;
+}
+
+.section-large {
+  padding: 10rem 0;
+}
